@@ -95,6 +95,8 @@ class ExtensionManager(object):
                 for packages in build_check_info.values():
                     if name in packages:
                         status = 'warning'
+            if "description" not in pkg_info:
+                self.log.warn(json.dumps(pkg_info))
             extensions.append(_make_extension_entry(
                 name=name,
                 description=pkg_info.get('description', ''),
